@@ -1,20 +1,22 @@
 package com.felipeazsantos.api_personal_finance.model;
 
+import com.felipeazsantos.api_personal_finance.controller.dto.LoginRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Table(name = "tb_users")
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User extends Base {
 
     @Id
@@ -34,4 +36,7 @@ public class User extends Base {
     private Set<Role> roles;
 
 
+    public boolean isPasswordCorrect(LoginRequest loginRequest, PasswordEncoder passwordEncoder) {
+        return passwordEncoder.matches(loginRequest.password(), this.password);
+    }
 }

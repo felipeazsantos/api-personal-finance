@@ -2,12 +2,9 @@ package com.felipeazsantos.api_personal_finance.controller;
 
 import com.felipeazsantos.api_personal_finance.controller.dto.LoginRequest;
 import com.felipeazsantos.api_personal_finance.controller.dto.LoginResponse;
-import com.felipeazsantos.api_personal_finance.model.User;
-import com.felipeazsantos.api_personal_finance.repository.UserRepositoty;
+import com.felipeazsantos.api_personal_finance.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
@@ -17,25 +14,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 public class TokenController {
 
     private final JwtEncoder jwtEncoder;
-    private final UserRepositoty userRepositoty;
+    private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public TokenController(JwtEncoder jwtEncoder, UserRepositoty userRepositoty, BCryptPasswordEncoder passwordEncoder) {
+    public TokenController(JwtEncoder jwtEncoder, UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.jwtEncoder = jwtEncoder;
-        this.userRepositoty = userRepositoty;
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
-        var user = userRepositoty.findByUsername(loginRequest.username());
+        var user = userRepository.findByUsername(loginRequest.username());
         if (user.isEmpty() || !user.get().isPasswordCorrect(loginRequest, passwordEncoder)) {
             throw new BadCredentialsException("user or password is invalid");
         }

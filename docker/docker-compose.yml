@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:16.3
+    ports:
+      - 5442:5432
+    expose:
+      - 5442
+    environment:
+      - POSTGRES_USER=felipe
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=personalfinance
+    volumes:
+      - /home/felipe/Documentos/dev_lab/PORTFOLIO/api-personal-finance/pgdata:/var/lib/postgresql/data

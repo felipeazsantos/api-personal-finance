@@ -1,4 +1,4 @@
-package com.felipeazsantos.api_personal_finance.config;
+package com.felipeazsantos.api_personal_finance.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,11 +12,11 @@ import java.time.Instant;
 import java.util.stream.Collectors;
 
 @RestController
-public class JwtAuthenticationResource {
+public class TokenController {
 
     private JwtEncoder jwtEncoder;
 
-    public JwtAuthenticationResource(JwtEncoder jwtEncoder) {
+    public TokenController(JwtEncoder jwtEncoder) {
         this.jwtEncoder = jwtEncoder;
     }
 

@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "tb_notification")
 @AllArgsConstructor
@@ -14,4 +16,12 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Notification extends Base {
+
+    private User user;
+
+    private NotificationType notificationType;
+
+    private String message;
+
+    private Instant sendDate;
 }

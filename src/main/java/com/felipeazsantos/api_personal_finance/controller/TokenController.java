@@ -54,7 +54,7 @@ public class TokenController {
                 .issuer("api-personal-finance")
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiresIn))
-                .subject(user.getId().toString())
+                .subject(user.getUsername())
                 .claim("scope", scopes)
                 .build();
         return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();

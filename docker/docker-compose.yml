@@ -10,4 +10,7 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=personalfinance
     volumes:
-      - /home/felipe/Documentos/dev_lab/PORTFOLIO/api-personal-finance/pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

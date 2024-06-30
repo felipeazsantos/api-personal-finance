@@ -12,24 +12,23 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_users")
+@Table(name = "tb_user")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends Base {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
     @Column(unique = true)
     private String username;
     private String password;
 
+    private String name;
+    private String email;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "tb_users_roles",
+            name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )

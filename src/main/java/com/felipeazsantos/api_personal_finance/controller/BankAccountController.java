@@ -24,7 +24,7 @@ public class BankAccountController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping("/bank-account")
     public ResponseEntity<BankAccount> createBankAccount(@RequestBody CreateBankAccountDto dto, JwtAuthenticationToken token) {
         var user = userService.retrieveUserFromJwtToken(token);
         var bankAccount = bankAccountService.createBankAccount(dto, user);

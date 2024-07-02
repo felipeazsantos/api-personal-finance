@@ -1,9 +1,7 @@
 package com.felipeazsantos.api_personal_finance.model;
 
 import com.felipeazsantos.api_personal_finance.model.enums.TransactionType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,20 +11,28 @@ import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity
-@Table(name = "tb_transaction")
+@Table(name = "tb_entry")
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class Transaction extends Base {
+public class Entry extends Base {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "bank_account_id")
     private BankAccount bankAccount;
 
     private TransactionType transactionType;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
     private String description;

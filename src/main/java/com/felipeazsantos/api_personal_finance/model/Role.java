@@ -14,6 +14,10 @@ import lombok.Setter;
 @Setter
 public class Role extends Base {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
 
     public enum Values {

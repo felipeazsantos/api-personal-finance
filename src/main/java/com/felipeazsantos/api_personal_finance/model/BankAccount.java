@@ -13,15 +13,22 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class BankAccount extends Base {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     private String name;
-
     private BigDecimal balance;
-
     private BankAccountType accountType;
 
-
+    public BankAccount(User user, String name, BigDecimal balance, BankAccountType accountType) {
+        this.user = user;
+        this.name = name;
+        this.balance = balance;
+        this.accountType = accountType;
+    }
 }

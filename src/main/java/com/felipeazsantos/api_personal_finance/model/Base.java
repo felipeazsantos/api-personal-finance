@@ -12,10 +12,6 @@ import java.time.Instant;
 @Setter
 @Getter
 public class Base {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @CreationTimestamp
     private Instant dateCreated;
 

@@ -6,6 +6,8 @@ import com.felipeazsantos.api_personal_finance.model.User;
 import com.felipeazsantos.api_personal_finance.repository.BankAccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BankAccountService {
 
@@ -17,5 +19,9 @@ public class BankAccountService {
 
     public BankAccount createBankAccount(CreateBankAccountDto dto, User user) {
         return bankAccountRepository.save(dto.toEntity(user));
+    }
+
+    public List<BankAccount> listBankAccounts(User user) {
+        return bankAccountRepository.findAllByUser(user);
     }
 }

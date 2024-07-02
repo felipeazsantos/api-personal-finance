@@ -1,5 +1,6 @@
 package com.felipeazsantos.api_personal_finance.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +24,15 @@ public class Category extends Base {
     private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Entry> entries;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Budget> budgets;
+
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

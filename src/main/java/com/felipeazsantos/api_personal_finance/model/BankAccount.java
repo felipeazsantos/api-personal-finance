@@ -1,5 +1,6 @@
 package com.felipeazsantos.api_personal_finance.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.felipeazsantos.api_personal_finance.model.enums.BankAccountType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ public class BankAccount extends Base {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     private String name;

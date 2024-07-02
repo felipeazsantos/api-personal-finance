@@ -1,6 +1,9 @@
 package com.felipeazsantos.api_personal_finance.model;
 
-import jakarta.persistence.*;
+import com.felipeazsantos.api_personal_finance.model.enums.TransactionType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +20,7 @@ import java.time.Instant;
 @Getter
 public class Transaction extends Base {
 
+    @ManyToOne
     private User user;
 
     private BankAccount bankAccount;

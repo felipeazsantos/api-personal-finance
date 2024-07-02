@@ -21,10 +21,11 @@ public class User extends Base {
 
     @Column(unique = true)
     private String username;
-    private String password;
 
-    private String name;
+    @Column(unique = true)
     private String email;
+    private String password;
+    private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(

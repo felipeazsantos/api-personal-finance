@@ -1,11 +1,16 @@
 package com.felipeazsantos.api_personal_finance.model;
 
+import com.felipeazsantos.api_personal_finance.model.enums.BankAccountType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "tb_bank_account")
+@Data
+@AllArgsConstructor
 public class BankAccount extends Base {
 
     @ManyToOne
@@ -14,8 +19,7 @@ public class BankAccount extends Base {
 
     private String name;
 
-    private BigDecimal startBalance;
-    private BigDecimal currentBalance;
+    private BigDecimal balance;
 
     private BankAccountType accountType;
 

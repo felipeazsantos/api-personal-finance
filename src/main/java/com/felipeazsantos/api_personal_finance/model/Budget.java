@@ -16,6 +16,7 @@ import java.time.Instant;
 @Getter
 public class Budget extends Base {
 
+    @OneToOne
     private User user;
 
     private Category category;

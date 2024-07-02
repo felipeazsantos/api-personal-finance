@@ -1,4 +1,4 @@
-package com.felipeazsantos.api_personal_finance.model;
+package com.felipeazsantos.api_personal_finance.model.enums;
 
 public enum BankAccountType {
     CURRENT,

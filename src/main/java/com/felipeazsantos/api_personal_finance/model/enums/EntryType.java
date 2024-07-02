@@ -1,6 +1,6 @@
 package com.felipeazsantos.api_personal_finance.model.enums;
 
-public enum TransactionType {
+public enum EntryType {
     REVENUE,
     EXPENSE;
 }

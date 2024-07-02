@@ -3,15 +3,16 @@ package com.felipeazsantos.api_personal_finance.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.felipeazsantos.api_personal_finance.model.enums.BankAccountType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "tb_bank_account")
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class BankAccount extends Base {
 
     @Id

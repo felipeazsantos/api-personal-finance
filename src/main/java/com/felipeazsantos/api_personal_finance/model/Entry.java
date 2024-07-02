@@ -1,11 +1,12 @@
 package com.felipeazsantos.api_personal_finance.model;
 
-import com.felipeazsantos.api_personal_finance.model.enums.TransactionType;
+import com.felipeazsantos.api_personal_finance.model.enums.EntryType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -29,7 +30,7 @@ public class Entry extends Base {
     @JoinColumn(name = "bank_account_id")
     private BankAccount bankAccount;
 
-    private TransactionType transactionType;
+    private EntryType entryType;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -37,10 +38,21 @@ public class Entry extends Base {
 
     private String description;
 
-    private BigDecimal valor;
+    private BigDecimal value = BigDecimal.ZERO;
 
-    private Instant transactionDate = Instant.now();
+    @CreationTimestamp
+    private Instant entryDate;
 
     private String checkingCopy;
 
+    public Entry(User user, BankAccount bankAccount, EntryType entryType, Category category, String description, BigDecimal value, Instant entryDate, String checkingCopy) {
+        this.user = user;
+        this.bankAccount = bankAccount;
+        this.entryType = entryType;
+        this.category = category;
+        this.description = description;
+        this.value = value;
+        this.entryDate = entryDate;
+        this.checkingCopy = checkingCopy;
+    }
 }

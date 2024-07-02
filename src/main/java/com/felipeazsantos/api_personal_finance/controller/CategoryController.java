@@ -4,7 +4,6 @@ import com.felipeazsantos.api_personal_finance.controller.dto.CreateCategoryDto;
 import com.felipeazsantos.api_personal_finance.model.Category;
 import com.felipeazsantos.api_personal_finance.service.CategoryService;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
